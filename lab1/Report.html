@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Report.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-1">ЛАБОРАТОРНАЯ РАБОТА 1</h1>
+<h1 id="%C2%AB%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D1%8D%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85-%D1%86%D0%B5%D0%BF%D0%B5%D0%B9%C2%BB">«ЭЛЕМЕНТЫ ЭЛЕКТРИЧЕСКИХ ЦЕПЕЙ»</h1>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-1">Эксперимент 1</h2>
+<p>Измерить напряжение идеального источника ЭДС. Построить схемы цепей в Multisim. Нарисовать график зависимости напряжения от тока.</p>
+<h3 id="%D0%B4%D0%B0%D0%BD%D0%BE">Дано:</h3>
+<p>Е1 = 25в Е2 = 28в Е3 = 30в
+<img src="image-2.png" alt="Alt text">
+<img src="image-1.png" alt="Alt text"></p>
+<table>
+<thead>
+<tr>
+<th>Напряжение В</th>
+<th>Ток мА</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>25</td>
+</tr>
+<tr>
+<td>28</td>
+<td>28</td>
+</tr>
+<tr>
+<td>30</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-2">Эксперимент 2</h2>
+<p>Измерить сопротивление. Построить схему цепи в Multisim.</p>
+<p><img src="image-3.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-3">Эксперимент 3</h2>
+<p>Измерить и вычислить общее сопротивление при параллельном, последовательном и
+смешанном соединениях резисторов. Построить схемы цепей в Multisim. Убедиться, что значения сопротивлений, вычисленные при помощи формул и измеренные программой, совпадают.</p>
+<h3 id="%D0%B4%D0%B0%D0%BD%D0%BE">Дано</h3>
+<p>R1 = 25кОм R2 = 26кОм R3 = 27кОм</p>
+<p><img src="image-4.png" alt="Alt text"></p>
+<p>Rэ = 78кОм</p>
+<p><img src="image-5.png" alt="Alt text"></p>
+<p>Rэ = 8.658</p>
+<p><img src="image-6.png" alt="Alt text"></p>
+<p>Rэ = 39.745</p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-4">Эксперимент 4</h2>
+<p>Составить схему цепи в Multisim. Построить ВАХ сопротивления.</p>
+<h3 id="%D0%B4%D0%B0%D0%BD%D0%BE">Дано</h3>
+<p>Rн = 25кОм E1 = 25В E2 = 28В E3 = 30В</p>
+<p><img src="image-7.png" alt="Alt text"></p>
+<p><img src="image-8.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-5">Эксперимент 5</h2>
+<p>Построить ВАХ реального источника ЭДС. Для этого провести опыты холостого хода и короткого замыкания. Составить схему цепи в Multisim.</p>
+<h3 id="%D0%B4%D0%B0%D0%BD%D0%BE">Дано:</h3>
+<p>E = 25В Rвн = 100Ом</p>
+<p><img src="image-9.png" alt="Alt text"></p>
+<p><img src="image-10.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-6">Эксперимент 6</h2>
+<p>Определить рабочую точку реального источника ЭДС при его работе на нагрузку:</p>
+<ul>
+<li>измерить ток и напряжение на нагрузке;</li>
+<li>построить на одном графике ВАХ сопротивления и реального источника ЭДС;</li>
+<li>убедиться, что показания приборов соответствуют показаниям графика, составить схему цепи в Multisim.
+Дано:
+En1 = 25v Rbh = 100om Rh = 25kOm</li>
+</ul>
+<p><img src="image-11.png" alt="Alt text">
+<img src="image-12.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-7">Эксперимент 7</h2>
+<p>Проанализировать изменения положения рабочей точки при изменении напряжения, внутреннего сопротивления и сопротивления нагрузки. Составить схемы цепей в Multisim. Сравнить результаты эксперимента с расчѐтами цепей.
+Дано:
+E1=25v E2=28v E3=30v Rbh=100Om Rh=25ROm</p>
+<h4 id="%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%8D%D0%B4%D1%81">Изменение ЭДС</h4>
+<p><img src="image-13.png" alt="Alt text">
+<img src="image-14.png" alt="Alt text">
+<img src="image-15.png" alt="Alt text">
+<img src="image-17.png" alt="Alt text">
+<img src="image-18.png" alt="Alt text">
+<img src="image-37.png" alt="Alt text"></p>
+<h4 id="%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE-%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">Изменение внутреннего сопротивления</h4>
+<p><img src="image-20.png" alt="Alt text">
+<img src="image-21.png" alt="Alt text">
+<img src="image-38.png" alt="Alt text"></p>
+<h4 id="%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8">Изменение сопротивления нагрузки</h4>
+<p><img src="image-22.png" alt="Alt text">
+<img src="image-23.png" alt="Alt text">
+<img src="image-25.png" alt="Alt text">
+<img src="image-24.png" alt="Alt text">
+<img src="image-33.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-8">Эксперимент 8</h2>
+<p>Bсследовать реальный источник тока. Составить схемы цепей в Multisim. Построить
+ВАХ реального источника тока.
+Дано:
+I=1A Rbh=100Om</p>
+<p><img src="image-26.png" alt="Alt text">
+<img src="image-27.png" alt="Alt text">
+<img src="image-34.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-9">Эксперимент 9</h2>
+<p>Исследовать поведение характеристик индуктивности и ёмкости на постоянном токе.
+Составить схемы цепей в Multisim. Для индуктивности: убедиться, что вольтметр показывает
+«0» при наличии тока, т.е. сопротивление индуктивности равно «0». Для ёмкости: убедиться,
+что амперметр показывает «0», что означает разрыв цепи, т.е. сопротивление ёмкости равно.
+Дано:
+E=25v Rh=100Om L=10mGn C=10mkF</p>
+<p><img src="image-29.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-10">Эксперимент 10</h2>
+<p>Построить делитель напряжения. Составить схему цепи в Multisim. Сравнить расчѐты,
+сделанные программой, с расчѐтами, сделанными вручную при помощи формул.
+Дано:
+E=25v R1=100om R2=200om</p>
+<p><img src="image-30.png" alt="Alt text">
+<img src="image-35.png" alt="Alt text"></p>
+<h2 id="%D1%8D%D0%BA%D1%81%D0%BF%D0%B5%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D1%82-11">Эксперимент 11</h2>
+<p>Построить делитель тока, cоставить схему цепи в Multisim, сравнить расчѐты,
+сделанные программой, с расчѐтами, сделанными вручную при помощи формул.
+Дано:
+I=1A R1=120Om R2=240Om</p>
+<p><img src="image-32.png" alt="Alt text">
+<img src="image-36.png" alt="Alt text"></p>
+
+</body>
+</html>
