@@ -5,7 +5,9 @@
 Измерить напряжение идеального источника ЭДС. Построить схемы цепей в Multisim. Нарисовать график зависимости напряжения от тока.
 ### Дано:
 Е1 = 25в Е2 = 28в Е3 = 30в
+
 ![Alt text](image-2.png)
+
 ![Alt text](image-1.png)
 
 |Напряжение В   | Ток мА|
@@ -65,6 +67,7 @@ E = 25В Rвн = 100Ом
 En1 = 25v Rbh = 100om Rh = 25kOm
 
 ![Alt text](image-11.png)
+
 ![Alt text](image-12.png)
 
 ## Эксперимент 7
@@ -74,10 +77,15 @@ E1=25v E2=28v E3=30v Rbh=100Om Rh=25ROm
 #### Изменение ЭДС
 
 ![Alt text](image-13.png)
+
 ![Alt text](image-14.png)
+
 ![Alt text](image-15.png)
+
 ![Alt text](image-17.png)
+
 ![Alt text](image-18.png)
+
 ![Alt text](image-37.png)
 
 #### Изменение внутреннего сопротивления
@@ -89,9 +97,13 @@ E1=25v E2=28v E3=30v Rbh=100Om Rh=25ROm
 #### Изменение сопротивления нагрузки
 
 ![Alt text](image-22.png)
+
 ![Alt text](image-23.png)
+
 ![Alt text](image-25.png)
+
 ![Alt text](image-24.png)
+
 ![Alt text](image-33.png)
 
 ## Эксперимент 8
@@ -101,7 +113,9 @@ Bсследовать реальный источник тока. Состави
 I=1A Rbh=100Om
 
 ![Alt text](image-26.png)
+
 ![Alt text](image-27.png)
+
 ![Alt text](image-34.png)
 
 ## Эксперимент 9
@@ -121,6 +135,7 @@ E=25v Rh=100Om L=10mGn C=10mkF
 E=25v R1=100om R2=200om
 
 ![Alt text](image-30.png)
+
 ![Alt text](image-35.png)
 
 ## Эксперимент 11
@@ -130,4 +145,5 @@ E=25v R1=100om R2=200om
 I=1A R1=120Om R2=240Om
 
 ![Alt text](image-32.png)
+
 ![Alt text](image-36.png)
